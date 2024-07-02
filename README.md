@@ -2,12 +2,8 @@
 
 ¡Bienvenido al repositorio del Proyecto Peludos & Facheros!
 
-Este proyecto consiste en desarrollar un sitio web com html y css para el ramo de Programación Web.
-
-## Mockups del Proyecto
-
-Para visualizar los mockups del proyecto, puedes acceder al siguiente enlace:
-
-[Mockups del Proyecto](https://drive.google.com/file/d/1CLT__kQVvgHbRsT0Vf-lijdLMjsIe6PB/view?usp=sharing)
-
-Los mockups han sido diseñados con la herramienta drawing.io.
+### Reglas generales:
+Continuaran con el proyecto desarrollado durante el semestre, ahora realizaran la aplicación web integrando nuevas páginas
+para las transacciones a la BD (CRUD para mantener productos), además de un sistema de registro de sesión de usuario (login),
+todo usando Django como framework. Recuerde que deben desarrollar el proyecto de forma colaborativa con un control de
+versiones usando GitHub
