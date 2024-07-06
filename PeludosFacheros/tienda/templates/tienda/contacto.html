@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  {% include 'components/common/head.html' %}
+
+  <body>
+    <div>{% include 'components/common/navbar.html' %}</div>
+    <main class="flex-shrink-0" id="contenido_container">
+      <div class="container" style="width: 100%">
+        <div class="row">
+          <div class="col col-izq"></div>
+          <div class="col-10 contenido-pagina">
+            <h1 class="mt-5">¡Contáctanos!</h1>
+            <p class="lead">
+                Si tienes alguna duda o sugerencia, no dudes en contárnoslo.
+            </p>
+            <div class="divider div-transparent"></div>
+            <form style="width: 80%;margin:auto;" class="needs-validation" novalidate>
+      
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input type="text" id="formContacto1" class="form-control" placeholder="John Doe" required/>
+                <label class="form-label" for="formContacto1">Nombre</label>
+              </div>
+            
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input type="email" id="formContacto2" class="form-control" placeholder="tu_correo@mail.com" required/>
+                <label class="form-label" for="formContacto2">Email</label>
+              </div>
+            
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <textarea class="form-control" id="formContacto3" rows="4" placeholder="Tu mensaje aquí" required></textarea>
+                <label class="form-label" for="formContacto3">Mensaje</label>
+              </div>
+            
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="formContacto4"
+                  checked
+                />
+                <label class="form-check-label" for="formContacto4">
+                  Enviar una copia a mi correo
+                </label>
+              </div>
+            
+              <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4" id="enviarMensaje">Enviar</button>
+            </form>
+          </div>
+          <div class="col col-der"></div>
+        </div>
+      </div>
+    </main>
+    <div>{% include 'components/common/footer.html' %}</div>
+  </body>
+</html>
