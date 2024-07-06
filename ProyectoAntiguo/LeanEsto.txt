@@ -1,0 +1,1 @@
+Dejo esto aqui para que sea mas facil copiar y pegar codigo del proyecto antiguo (sin python, solo html, css y js)
