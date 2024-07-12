@@ -40,16 +40,37 @@ def tiendaropas(request):
 def mantenedorproductos(request):
     productos = Producto.objects.all()
     context = {"productos" : productos}
-    return render(request,'tienda/productosall.html', context)
+    return render(request,'tienda/mantenedorproductos.html', context)
 
-def agregarproductos(request):
+def productosadd(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             productos = Producto.objects.all()
             context = {"productos" : productos}
-            return render(request,'tienda/productosall.html', context)
+            return render(request,'tienda/mantenedorproductos.html', context)
     else:
         form = ProductoForm()
-    return render(request, 'tienda/productosForm.html', {'form': form})
+    return render(request, 'tienda/productosadd.html', {'form': form})
+
+def productosEdit(request,pk):
+    try:
+        producto = Producto.objects.get(id=pk)
+        context = {}
+        if producto:
+            if request.method == "POST":
+                form = ProductoForm(request.POST,instance=producto)
+                form.save
+                mensaje = "Producto actualizado"
+                context = {'producto':producto, 'form':form, 'mensaje':mensaje}
+                return render(request, 'tienda/productosForm.html',context)
+            else:
+                form = ProductoForm(instance=producto)
+                mensaje = ""
+                context = {'producto':producto, 'form':form, 'mensaje':mensaje}
+                return render(request, 'tienda/productosForm.html',context)
+    except:
+        productos = Producto.objects.all()
+        context = {"productos" : productos}
+        return render(request,'tienda/mantenedorproductos.html', context)

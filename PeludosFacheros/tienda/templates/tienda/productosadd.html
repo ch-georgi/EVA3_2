@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  {% include 'components/common/head.html' %}
+
+  <body>
+    <div>{% include 'components/common/navbar.html' %}</div>
+    <main class="flex-shrink-0" id="contenido_container">
+      <div class="container" style="width: 100%">
+        <div class="row">
+          <div class="col col-izq"></div>
+          <div class="col-10 contenido-pagina">
+            <h1 class="mt-5">Formulario de productos</h1>
+            <div class="divider div-transparent"></div>
+            <div class="container">
+                <div class="input-group">
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                    {% for field in form %}
+                        <tr>
+                            <th>{{ field.label_tag }}</th>
+                            <td>
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <small style="color: grey">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div style="color: red">{{ error }}</div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                    <button type="submit" class="btn btn-outline-primary">Agregar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col col-der"></div>
+        </div>
+      </div>
+    </main>
+    <div>{% include 'components/common/footer.html' %}</div>
+  </body>
+</html>
