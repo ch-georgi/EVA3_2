@@ -25,7 +25,7 @@
                   id="product-container"
                   >
                 <!-- Aquí se introducen todos los artículos en venta. En este caso es un for loop que carga desde la bd todos los alimentos.-->
-
+                <h1>Listado de {{ categoria }}</h1>
                 <!--Primero iteramos sobre cada producto-->
                 {% for producto in productos %}
                 <!--Ahora lo cargamos -->
@@ -39,8 +39,8 @@
                       <!-- TODO: Hay que resolver como colocar el path de la imagen correctamente.-->
                       <img
                         class="card-img-top"
-                        src="{{producto.imagen}}"
-                        alt="..."
+                        src="{{producto.imagen.url}}"
+                        alt="{{producto.nombre}}"
                       />
                       <!-- Product details-->
                       <div class="card-body p-4">
@@ -50,11 +50,6 @@
                             {{producto.nombre}}
                           </h5>
                           {% if producto.oferta%}
-                          <!--TODO: Por que no se ve?? :(-->
-                          <span class="text-muted text-decoration-line-through"
-                            >{{product.oferta}}</span
-                          >
-                          {% endif %}
                           <!--Colocar sale badge-->
                           {{producto.precio}}
                           <!-- Product price-->
