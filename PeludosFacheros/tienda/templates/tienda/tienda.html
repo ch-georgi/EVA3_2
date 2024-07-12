@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  {% include 'components/common/head.html' %}
+
+  <body>
+    <div>{% include 'components/common/navbar.html' %}</div>
+    <main class="flex-shrink-0" id="contenido_container">
+      <div class="container" style="width: 100%">
+        <div class="row">
+          <div class="col col-izq"></div>
+          <div class="col-10 contenido-pagina">
+            <h1 class="mt-5">¡Bienvenido a Peludos y Facheros!
+            </h1>
+            Aquí, cada compra cuenta. Nuestros productos de calidad no solo miman a tus mascotas, sino que también apoyan fundaciones que ayudan a mascotas necesitadas. Únete a nosotros para hacer una diferencia mientras consientes a tus compañeros peludos.</p>
+            <!--TOD: Cambiar mensaje segun contexto ropas o accesorios-->
+            <p class="lead">¡Gracias por elegirnos para mimar a tus adorables mascotas con los mejores alimentos!</p>
+            
+            <!-- Tienda-->
+            <section class="py-5">
+              <div class="container px-4 px-lg-5 mt-5">
+                <h1>Listado de {{ categoria }}</h1>
+                <div
+                  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+                  id="product-container"
+                  >
+                <!-- Aquí se introducen todos los artículos en venta. En este caso es un for loop que carga desde la bd todos los alimentos.-->
+                <!--Primero iteramos sobre cada producto-->
+                {% for producto in productos %}
+                <!--Ahora lo cargamos -->
+                <div class="col mb-5">
+                  <div class="card h-100">
+                  {% if producto.oferta%}
+                  <!--Es un producto con ofertas-->
+                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem" > Oferta </div>
+                  {% endif %}
+                      <!-- Product image-->
+                      <!-- TODO: Hay que resolver como colocar el path de la imagen correctamente.-->
+                      <img
+                        class="card-img-top"
+                        src="{{producto.imagen.url}}"
+                        alt="{{producto.nombre}}"
+                      />
+                      <!-- Product details-->
+                      <div class="card-body p-4">
+                        <div class="text-center">
+                          <!-- Product name-->
+                          <h5 class="fw-bolder">
+                            {{producto.nombre}}
+                          </h5>
+                          <!--Colocar sale badge-->
+                          {{producto.precio}}
+                          <!-- Product price-->
+                        </div>
+                      </div>
+                      <br>
+                      <!-- Product actions-->
+                      <!-- TODO: Manejar productos con varias opciones (O no ponerlos!)-->
+                      <div
+                        class="card-footer p-4 pt-0 border-top-0 bg-transparent"
+                      >
+                        <div class="text-center">
+                          <a class="btn btn-outline-dark mt-auto" href="#"
+                            >Añadir</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="col col-der">
+            <form class="d-flex" style="margin-top: 100px">
+              <button id="carrito_tienda" class="btn btn btn-light end-0" type="submit" disabled="true">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Carrito
+                <span class="badge bg-dark text-white ms-1 rounded-pill"
+                  >0</span
+                >
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </main>
+  </body>
+</html>
