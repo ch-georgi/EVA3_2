@@ -54,7 +54,7 @@ def productosadd(request):
         form = ProductoForm()
     return render(request, 'tienda/productosadd.html', {'form': form})
 
-def productosEdit(request,pk):
+def productosedit(request,pk):
     try:
         producto = Producto.objects.get(id=pk)
         context = {}
@@ -73,4 +73,19 @@ def productosEdit(request,pk):
     except:
         productos = Producto.objects.all()
         context = {"productos" : productos}
+        return render(request,'tienda/mantenedorproductos.html', context)
+    
+def productosdel(request,pk):
+    try:
+        producto = Producto.objects.get(id=pk)
+        context = {}
+        if producto:
+            productos = Producto.objects.all()
+            context = {"productos" : productos}
+            return render(request,'tienda/mantenedorproductos.html', context)
+    except:
+        print("Error al eliminar producto")
+        mensaje = "Error, producto no encontrado"
+        productos = Producto.objects.all()
+        context = {'productos':productos,'mensaje':mensaje}
         return render(request,'tienda/mantenedorproductos.html', context)
